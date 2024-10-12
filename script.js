@@ -1,8 +1,8 @@
 const container = document.querySelector(".container")
-
-for (i = 0; i < 16; i++) {
-    const gridSquare = document.createElement("div")
-    gridSquare.classToggle("gridSqaure")
-    
-    
-}
+let i = 0;
+do { 
+    const gridSquare = document.createElement("div");
+    gridSquare.classList.toggle("gridSquare");
+    container.appendChild(gridSquare);
+    i++;
+} while (i < 16);

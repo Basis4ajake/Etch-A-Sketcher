@@ -1,0 +1,15 @@
+body {}
+
+.container {
+    display:flex;
+    flex-flow: row wrap;
+    background-color:gray;
+    border: solid black 4px;
+}
+
+.gridSquare {
+    flex: 1;
+    min-width: 15rem;
+    min-height: 15rem;
+    border: solid black 5px;
+}
