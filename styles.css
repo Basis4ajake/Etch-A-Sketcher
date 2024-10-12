@@ -9,7 +9,11 @@ body {}
 
 .gridSquare {
     flex: 1;
-    min-width: 15rem;
-    min-height: 15rem;
+    min-width: 7.5rem;
+    min-height: 7.5rem;
     border: solid black 5px;
+}
+
+.gridSquare:hover {
+    background-color: green;
 }
