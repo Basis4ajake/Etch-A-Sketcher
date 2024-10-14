@@ -1,19 +1,28 @@
-body {}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .container {
     display:flex;
     flex-flow: row wrap;
     background-color:gray;
     border: solid black 4px;
+    width: 750px;
+    height: 750px;
 }
 
 .gridSquare {
-    flex: 1;
-    min-width: 7.5rem;
-    min-height: 7.5rem;
-    border: solid black 5px;
+    flex: 1 0 44px;
+    border: solid black 1px;
 }
 
-.gridSquare:hover {
-    background-color: green;
+.mousedInto {
+    background-color: seagreen;
 }
+
+/* .gridSquare:hover {
+    background-color: green;
+} */
