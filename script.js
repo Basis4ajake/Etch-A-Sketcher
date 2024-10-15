@@ -12,13 +12,11 @@ function getGridNumber() {
 const colors = ["red", "green", "blue", "yellow", "teal", "black", "orange", "purple", "goldenrod", "maroon", "aquamarine", "brown", 
 "indigo", "violet"];
 
-function 
-// function checkGridNumber() {
-//     while ((setGridNumber > 100) || (setGridNumber != Number)) {
-
-//          setGridNumber = prompt(`You entered ${setGridNumber}. Make sure to type a number less than 100 and type in as a number and not spelled out using letters.`);
-//      return
-// }
+function getColor() {
+    randomColorChoice = Math.floor(Math.random() * colors.length - 1);
+    console.log(colors[randomColorChoice]);
+    return colors[randomColorChoice];
+};
 
 let gridNumber = getGridNumber();
 
@@ -35,7 +33,7 @@ do {
         console.dir(e.target)
         console.dir(e.timeStamp)
         console.dir(e)
-        e.target.style.backgroundColor = 'red';
+        e.target.style.backgroundColor = getColor();
     })
     container.appendChild(gridSquare);
     i++;
