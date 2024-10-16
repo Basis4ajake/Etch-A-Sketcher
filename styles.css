@@ -10,18 +10,26 @@ body {
     display:flex;
     flex-flow: row wrap;
     background-color:gray;
-    border: solid black 4px;
-    width: 750px;
-    height: 750px;
+    border: solid black 3px;
+    width: 600px;
+    height: 600px;
 }
 
 .gridSquare {
-    flex: 1 0 49%;
+    flex: 1 0 100%;
     border: solid black 1px;
 }
 
 .mousedInto {
     background-color: seagreen;
+}
+
+.resetButton {
+    margin: 2rem;
+    padding: 1rem;
+    background-color: limegreen;
+    border-radius: 10px;
+    font-size: 1rem;
 }
 
 /* .gridSquare:hover {
