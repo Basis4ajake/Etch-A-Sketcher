@@ -4,12 +4,10 @@ let gridRow
 let setGridNumber
 
 function getGridNumber() {
-     setGridNumber = prompt('How many squares should the grid sides be? Enter a number less than 100');
+    setGridNumber = prompt('How many squares should the grid sides be? Enter a number less than 100');
     if (setGridNumber > 100) {
         checkGridNumber()
     }
-    console.log(setGridNumber);
-    console.dir(setGridNumber);
     return setGridNumber;
 }
 
@@ -53,12 +51,7 @@ function createGrid() {
             gridSquare.classList.add("gridSquare", `square-${i + 1}`, 'gridSquare:hover');
             gridSquare.addEventListener("mouseover", e => {
             console.log(e);       
-            console.log(e.target);
-            console.dir(e)
-            console.dir(e.type)
-            console.dir(e.target)
-            console.dir(e.timeStamp)
-            console.dir(e)
+            console.dir(e);
             e.target.style.backgroundColor = getRandomHexColor();
             })
         gridRow.appendChild(gridSquare);
