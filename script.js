@@ -19,14 +19,14 @@ function getHexCharacters(){
     return hexColorCharacters[randomChoice]
 }
 
-function createRandomHexColor(){
+function getRandomHexColor(){
     let hexDigitOne = getHexCharacters();
     let hexDigitTwo = getHexCharacters();
     let hexDigitThree = getHexCharacters();
     let hexDigitFour = getHexCharacters();
     let hexDigitFive = getHexCharacters();
     let hexDigitSix = getHexCharacters();
-    return randomHexColor = hexDigitOne +  hexDigitTwo + hexDigitThree + hexDigitFour + hexDigitFive + hexDigitSix;
+    return randomHexColor = "#" + hexDigitOne +  hexDigitTwo + hexDigitThree + hexDigitFour + hexDigitFive + hexDigitSix + "";
 }
 
 function getColor() {
@@ -52,7 +52,7 @@ do {
         console.dir(e.target)
         console.dir(e.timeStamp)
         console.dir(e)
-        e.target.style.backgroundColor = getColor();
+        e.target.style.backgroundColor = getRandomHexColor();
     })
     container.appendChild(gridSquare);
     i++;
