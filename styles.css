@@ -3,6 +3,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .container {
@@ -15,7 +16,7 @@ body {
 }
 
 .gridSquare {
-    flex: 1 0 44px;
+    flex: 1 0 49%;
     border: solid black 1px;
 }
 
