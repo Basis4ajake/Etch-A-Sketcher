@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles.css" type="text/css" rel="stylesheet">
-    <title>Etch a Sketch ColorChanger</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="styles.css" type="text/css" rel="stylesheet" />
+  <title>Etch-A-Sketcher</title>
 </head>
 <body>
-    <div class="container">
-    </div>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Modern sketchboard</p>
+        <h1>Etch-A-Sketcher</h1>
+        <p class="description">Hover to draw with a fresh random color on each square. Use the controls below to resize and reset the board.</p>
+      </div>
+    </header>
+
+    <section class="controls">
+      <div class="control-group">
+        <label for="gridSize">Grid size</label>
+        <div class="size-control">
+          <input id="gridSize" type="range" min="8" max="64" value="16" />
+          <output id="gridSizeValue">16</output>
+        </div>
+      </div>
+
+      <div class="control-group button-row">
+        <button id="newGrid" type="button">New grid</button>
+        <button id="clearGrid" type="button">Clear board</button>
+      </div>
+    </section>
+
+    <main class="canvas-panel">
+      <div class="container"></div>
+    </main>
+
+    <footer class="footer">
+      <span>Tip: hover over the board to draw. Use the buttons to refresh or clear the canvas.</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>
