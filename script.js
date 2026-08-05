@@ -1,79 +1,51 @@
-const container = document.querySelector(".container")
-let gridSquare
-let gridRow
-let setGridNumber
+const container = document.querySelector(".container");
+const gridSizeInput = document.querySelector("#gridSize");
+const gridSizeValue = document.querySelector("#gridSizeValue");
+const newGridButton = document.querySelector("#newGrid");
+const clearGridButton = document.querySelector("#clearGrid");
 
-function getGridNumber() {
-    setGridNumber = prompt('How many squares should the grid sides be? Enter a number less than 100');
-    if (setGridNumber > 100) {
-        checkGridNumber()
-    }
-    return setGridNumber;
+const hexDigits = ["A", "B", "C", "D", "E", "F", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+function getRandomHexColor() {
+  return `#${Array.from({ length: 6 }, () => hexDigits[Math.floor(Math.random() * hexDigits.length)]).join("")}`;
 }
 
-function checkGridNumber(){
-    do {
-        setGridNumber = prompt(`You entered either a word or a number higher than 100. You entered ${setGridNumber}. Please try again. Enter a number less than 100 to set the number of squares per side`);
+function createGrid(gridNumber = Number(gridSizeInput.value)) {
+  if (!gridNumber || gridNumber < 1) {
+    gridNumber = 16;
+  }
+  gridNumber = Math.min(Math.max(gridNumber, 8), 64);
 
-    } while (setGridNumber > 100);
+  deleteGrid();
+  container.style.gridTemplateColumns = `repeat(${gridNumber}, minmax(0, 1fr))`;
+
+  for (let index = 0; index < gridNumber * gridNumber; index += 1) {
+    const gridSquare = document.createElement("div");
+    gridSquare.className = "gridSquare";
+    gridSquare.addEventListener("mouseover", (event) => {
+      event.target.style.backgroundColor = getRandomHexColor();
+    });
+    container.appendChild(gridSquare);
+  }
 }
 
-/* Select a random Hex Color */
-const hexColorCharacters = ["A", "B", "C", "D", "E", "F", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-
-function getHexCharacters(){
-    let randomChoice = Math.floor(Math.random() * (hexColorCharacters.length - 1));
-    return hexColorCharacters[randomChoice]
+function deleteGrid() {
+  container.innerHTML = "";
 }
 
-function getRandomHexColor(){
-    let hexDigitOne = getHexCharacters();
-    let hexDigitTwo = getHexCharacters();
-    let hexDigitThree = getHexCharacters();
-    let hexDigitFour = getHexCharacters();
-    let hexDigitFive = getHexCharacters();
-    let hexDigitSix = getHexCharacters();
-    return randomHexColor = "#" + hexDigitOne +  hexDigitTwo + hexDigitThree + hexDigitFour + hexDigitFive + hexDigitSix + "";
+function clearGrid() {
+  container.querySelectorAll(".gridSquare").forEach((square) => {
+    square.style.backgroundColor = "";
+  });
 }
 
-function createGrid() {
-    if (document.querySelector(".gridRow")){
-        deleteGrid();
-    }
-    let gridNumber = getGridNumber();
-    for (let i = 0; i < gridNumber; i++) {        //Loop to create Grid Rows and attach to Container. Number of Grid rows determined by user provided grid number
-        gridRow = document.createElement("div");
-        gridRow.classList.add("gridRow");
-        gridRow.setAttribute("style", "display: flex; flex: 1; flex-flow: wrap;")
-        container.appendChild(gridRow);
-        for (let i = 0; i < gridNumber; i++) {     //Nested loop to create grid squares and attach group of grid squares to each grid Row. 
-            gridSquare = document.createElement("div");    //Number of grid squares per row also determined by user provided grid number.
-            gridSquare.classList.add("gridSquare", `square-${i + 1}`, 'gridSquare:hover');
-            gridSquare.addEventListener("mouseover", e => {
-            console.log(e);       
-            console.dir(e);
-            e.target.style.backgroundColor = getRandomHexColor();
-            })
-        gridRow.appendChild(gridSquare);
-        }; 
-    };
-};
+function refreshGridValue() {
+  gridSizeValue.textContent = gridSizeInput.value;
+}
 
-function deleteGrid(){
-    let gridRows = document.querySelectorAll(".gridRow");
-    gridRows.forEach(gridRow => {
-        gridRow.remove();
-    })
-    };
+gridSizeInput.addEventListener("input", refreshGridValue);
+newGridButton.addEventListener("click", () => createGrid(Number(gridSizeInput.value)));
+clearGridButton.addEventListener("click", clearGrid);
 
-const resetTool = document.createElement("div"); //create container for reset button
-resetTool.classList.add("resetTool");
-document.body.prepend(resetTool);
-
-const resetButton = document.createElement("button"); //Create reset button and add to container
-resetButton.classList.add("resetButton");
-resetButton.textContent = "Click here to reset and create a new grid"
-resetButton.addEventListener("click", createGrid)
-resetTool.append(resetButton)
-
-// createGrid();
+refreshGridValue();
+createGrid();
