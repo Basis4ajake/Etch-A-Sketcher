@@ -10,6 +10,7 @@ body {
   color: #f8fafc;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 2rem;
 }
 
@@ -17,6 +18,7 @@ body {
   width: min(100%, 1100px);
   display: grid;
   gap: 1.75rem;
+  margin: 0 auto;
 }
 
 .hero {
