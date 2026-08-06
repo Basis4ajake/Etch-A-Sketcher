@@ -20,6 +20,12 @@ jobs:
           submodules: true
           lfs: false
 
+      # Forces the environment to use an active Node version, preventing legacy runner mismatch warnings
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -28,7 +34,8 @@ jobs:
           action: "upload"
           app_location: "/" 
           api_location: "" 
-          output_location: "." 
+          output_location: ""
+          skip_app_build: true 
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
