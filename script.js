@@ -14,7 +14,7 @@ function createGrid(gridNumber = Number(gridSizeInput.value)) {
   if (!gridNumber || gridNumber < 1) {
     gridNumber = 16;
   }
-  gridNumber = Math.min(Math.max(gridNumber, 8), 1000);
+  gridNumber = Math.min(Math.max(gridNumber, 8), 150);
 
   deleteGrid();
   container.style.gridTemplateColumns = `repeat(${gridNumber}, minmax(0, 1fr))`;
