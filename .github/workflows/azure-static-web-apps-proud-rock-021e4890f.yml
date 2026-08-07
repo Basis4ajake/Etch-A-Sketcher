@@ -30,5 +30,4 @@ jobs:
           app_location: "/"
           api_location: ""
           output_location: ""
-          repo_token: ${{ secrets.GITHUB_TOKEN }}      
-
+          skip_app_build: true
