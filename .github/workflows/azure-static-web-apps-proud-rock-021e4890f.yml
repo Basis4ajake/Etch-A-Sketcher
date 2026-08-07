@@ -19,7 +19,8 @@ jobs:
             echo "Secret is present"
           else
             echo "Secret is EMPTY"
-            
+            exit 1
+          fi
 
       - name: Build And Deploy
         uses: Azure/static-web-apps-deploy@v1
@@ -29,4 +30,5 @@ jobs:
           app_location: "/"
           api_location: ""
           output_location: ""
-          skip_app_build: true
+          repo_token: ${{ secrets.GITHUB_TOKEN }}      
+
